@@ -41,19 +41,9 @@ namespace speedLoop
 
         public void loop(string x)
         {
-            while ( x!="stop" || x != "pause" )
-            {
-                if (run == true)
-                {
-                    counter += 1;
-                    showValueOfCounter();
-                    this.Refresh();
-                }
-                else
-                {
-                    break;
-                }
-            };
+            if (x == "start") { timer1.Enabled=true; }
+            else if (x == "pause") {  timer1.Enabled = false;  }
+            else if (x == "stop") { timer1.Enabled = false;  }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,6 +60,21 @@ namespace speedLoop
         private void button3_Click(object sender, EventArgs e)
         {
             stop();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (run == true)
+            {
+                counter += 1;
+                showValueOfCounter();
+                this.Refresh();
+            }
+            else
+            {
+                run = false;
+                
+            }
         }
     }
 }
